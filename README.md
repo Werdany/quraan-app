@@ -89,4 +89,4 @@ This project is open-source and available for everyone.
 
 ## 💡 Author
 
-Developed with ❤️ by You
+Developed with ❤️ by Abdo Elwerdany
