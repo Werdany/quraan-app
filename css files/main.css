@@ -1,0 +1,82 @@
+* {
+  direction: rtl;
+  box-sizing: border-box;
+  background-color: var(--background);
+}
+:root {
+  /* الألوان الأساسية - Primary Colors */
+  --primary: #1e3a8a; /* الأزرق النيلي العميق (للعناوين والبار العلوي) */
+  --primary-light: #3b82f6; /* أزرق فاتح (للحالات النشطة/Hover) */
+  --primary-dark: #172554; /* أزرق غامق جداً (للظلال أو التحديد القوي) */
+  /* ألوان الخلفيات - Backgrounds */
+  --background: #f1f5f9; /* لون الخلفية الأساسية (الرخامي الهادئ) */
+  --surface: #ffffff; /* لون الكروت أو الحاويات البيضاء */
+  /* ألوان النصوص - Typography */
+  --text-main: #0f172a; /* لون النص الأساسي (شبه أسود مريح) */
+  --text-muted: #64748b; /* لون النصوص الفرعية أو التوضيحية */
+  /* ألوان التفاعل واللمسات - Accents */
+  --accent: #60a5fa; /* لون الأزرار أو الأيقونات الثانوية */
+  --border: #e2e8f0; /* لون الحدود الفاصلة */
+  --success: #10b981;
+  --error: #ef4444;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 10px -1px rgb(0 0 0 / 0.1);
+  --radius: 12px;
+}
+/* Start aside */
+aside {
+  width: 300px;
+  background-color: #fff;
+  height: 100vh;
+  position: fixed;
+  text-align: center;
+  padding: 40px 0 0 0;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+}
+aside .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+aside .logo img {
+  width: 100px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+aside .logo h1 {
+  font-weight: 900;
+  font-size: 35px;
+  color: var(--primary);
+}
+
+aside .side-list {
+  flex: 1;
+}
+aside .side-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+aside .side-list button {
+  width: 80%;
+  padding: 10px;
+  background-color: var(--background);
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 19px;
+  border-radius: var(--radius);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+aside .side-list button:hover:not(.active) {
+  background-color: #60a5fa29;
+  color: var(--primary-light);
+}
+aside button.active {
+  background-color: var(--primary);
+  color: #fff;
+}
