@@ -80,3 +80,76 @@ aside button.active {
   background-color: var(--primary);
   color: #fff;
 }
+/* end aside */
+/* start footer */
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 100000;
+}
+footer .icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 20px;
+}
+footer .icon .song-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 250px;
+}
+footer .icon .song-name i {
+  background-color: var(--primary);
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 7px;
+  margin: 0 15px;
+  font-size: 20px;
+}
+footer .icon .song-name .text h2 {
+  margin: 0;
+}
+footer .icon .song-name .text p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+footer .icon .play-pause i {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+footer .icon .play-pause i:hover:not(.fa-play, .fa-pause) {
+  color: var(--primary);
+}
+footer .icon .play-pause i.fa-play,
+footer .icon .play-pause i.fa-pause {
+  background-color: var(--primary);
+  border-radius: 50%;
+  color: #fff;
+  scale: calc(1.1);
+  transition: 0.3s;
+}
+footer .icon .play-pause i.fa-play:hover,
+footer .icon .play-pause i.fa-pause:hover {
+  scale: calc(1.2);
+}
+footer .icon .loop-audio {
+  color: var(--primary);
+  scale: 1.1;
+}
+.progress {
+  width: 100%;
+}
+footer .time {
+  color: var(--text-muted);
+}
