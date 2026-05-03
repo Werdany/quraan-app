@@ -2,6 +2,7 @@
   direction: rtl;
   box-sizing: border-box;
   background-color: var(--background);
+  font-family: "Cairo", sans-serif;
 }
 :root {
   /* الألوان الأساسية - Primary Colors */
@@ -10,7 +11,7 @@
   --primary-dark: #172554; /* أزرق غامق جداً (للظلال أو التحديد القوي) */
   /* ألوان الخلفيات - Backgrounds */
   --background: #f1f5f9; /* لون الخلفية الأساسية (الرخامي الهادئ) */
-  --surface: #ffffff; /* لون الكروت أو الحاويات البيضاء */
+  --surface: #cedbeb52; /* لون الكروت أو الحاويات البيضاء */
   /* ألوان النصوص - Typography */
   --text-main: #0f172a; /* لون النص الأساسي (شبه أسود مريح) */
   --text-muted: #64748b; /* لون النصوص الفرعية أو التوضيحية */
@@ -26,12 +27,11 @@
 /* Start aside */
 aside {
   width: 300px;
-  background-color: #fff;
+  background-color: var(--background);
   height: 100vh;
   position: fixed;
   text-align: center;
   padding: 40px 0 0 0;
-  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-md);
@@ -48,7 +48,7 @@ aside .logo img {
 }
 aside .logo h1 {
   font-weight: 900;
-  font-size: 35px;
+  font-size: 25px;
   color: var(--primary);
 }
 
@@ -63,7 +63,7 @@ aside .side-list button {
   width: 80%;
   padding: 10px;
   background-color: var(--background);
-  font-size: 30px;
+  font-size: 23px;
   font-weight: bold;
   margin-bottom: 19px;
   border-radius: var(--radius);
@@ -152,4 +152,124 @@ footer .icon .loop-audio {
 }
 footer .time {
   color: var(--text-muted);
+}
+/* end footer */
+/* Start Listen */
+.listen {
+  width: calc(100% - 300px);
+  position: relative;
+  left: -300px;
+
+  background-color: var(--surface);
+  padding: 20px;
+}
+.listen .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+}
+.listen .head h1 {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 30px;
+  background-color: transparent;
+}
+.listen .head input {
+  margin-left: 100px;
+  border: none;
+  outline: none;
+  width: 300px;
+  height: 50px;
+  background-color: #fff;
+  padding: 0 50px 0;
+  border-radius: 9999px;
+  color: var(--text-muted);
+  transition: 0.3s;
+}
+.listen .head i {
+  position: absolute;
+  left: 382px;
+  color: var(--text-muted);
+}
+.listen .head input:focus {
+  border: 1px solid var(--accent);
+}
+
+.reader {
+  width: 320px;
+  margin-top: 30px;
+  height: 50px;
+  border-radius: 9999px;
+  transition: 0.3s;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.reader::after {
+  content: "\f007";
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  color: var(--primary);
+}
+.reader select {
+  width: 300px;
+  height: 50px;
+  border-radius: 9999px;
+  padding: 0 40px 0;
+  border: 0;
+  outline: 0;
+  color: var(--text-muted);
+  transition: 0.3s;
+
+  cursor: pointer;
+}
+.reader:hover {
+  border: 1px solid var(--accent);
+  transform: translateY(-5px);
+}
+.all-quraan {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  background-color: transparent;
+  margin-top: 50px;
+}
+.all-quraan .surah {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius);
+  padding: 5px 10px;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+.all-quraan .surah:hover {
+  border: 1px solid var(--accent);
+  span {
+    background-color: #60a5fa29;
+    color: var(--accent);
+  }
+}
+.all-quraan .surah span {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  background-color: #e9eff6;
+  line-height: 50px;
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  transition: 0.3s;
+}
+.all-quraan .surah .info {
+  margin-right: 15px;
+}
+.all-quraan .surah .info h3 {
+  color: var(--text-main);
+  margin-bottom: 0;
+}
+.all-quraan .surah .info p {
+  color: var(--text-muted);
+  margin-top: 5px;
 }
