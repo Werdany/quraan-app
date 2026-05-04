@@ -1,5 +1,3 @@
-//    https://api.alfurqan.online
-
 // aside
 const sideBtn = document.querySelectorAll(".btn");
 sideBtn.forEach((btn) => {
@@ -12,20 +10,60 @@ sideBtn.forEach((btn) => {
 });
 //footer
 // Select Reader
-const readers = document.querySelector(".mens");
+const readers = document.querySelector(".reader");
+const readersName = document.querySelector(".list");
+const chosen = document.querySelector(".chosen");
+const searchReader = document.querySelector(".search-reader");
+searchReader.addEventListener("click", function () {
+  readersName.style.opacity = "1";
+  readersName.style.bottom = "-310px";
+});
+readers.onclick = function () {
+  readersName.classList.toggle("visible");
+};
 async function selectReader() {
   const res = await fetch(`https://mp3quran.net/api/v3/reciters?language=ar `);
   const data = await res.json();
   for (let i = 0; i <= 238; i++) {
-    let opt = document.createElement("option");
-    opt.innerHTML = data.reciters[i].name;
-    opt.value = data.reciters[i].id;
-    readers.appendChild(opt);
+    let div = document.createElement("div");
+    div.innerHTML = data.reciters[i].name;
+    div.classList.add("reader-name");
+    readersName.appendChild(div);
+    if (div.innerHTML === "ماهر المعيقلي") {
+      div.classList.add("reader-active");
+    }
   }
+  syncName();
 }
-selectReader();
+function syncName() {
+  let allNames = readersName.getElementsByTagName("div");
+  Array.from(allNames).forEach((ele) => {
+    if (ele.classList.contains("reader-active")) {
+      chosen.innerHTML = ele.innerHTML;
+    }
+    ele.addEventListener("click", function () {
+      readersName.style.opacity = "0";
+      Array.from(allNames).forEach((ele) => {
+        ele.classList.remove("reader-active");
+      });
+      ele.classList.add("reader-active");
+      chosen.innerHTML = ele.innerHTML;
+      searchReader.value = "";
+    });
+  });
+}
 
-const mainPage = document.querySelector(".all-quraan");
+searchReader.addEventListener("input", function () {
+  let names = readersName.getElementsByTagName("div");
+  Array.from(names).forEach((ele) => {
+    if (ele.innerHTML.includes(searchReader.value)) {
+      ele.style.display = "";
+    } else {
+      ele.style.display = "none";
+    }
+  });
+});
+selectReader();
 
 const audio = document.querySelector("audio");
 const playIcon = document.querySelector(".fa-play");
@@ -70,6 +108,8 @@ audio.addEventListener("ended", function () {
 progress.addEventListener("click", function () {
   audio.play();
   audio.currentTime = progress.value;
+  playIcon.classList.remove("fa-play");
+  playIcon.classList.add("fa-pause");
 });
 
 getSurah();
@@ -79,8 +119,11 @@ async function getSurah() {
     "https://mp3quran.net/api/v3/reciters?language=ar",
   );
   const data = await response.json();
+  audio.src = `${data.reciters[3].moshaf[0].server}001.mp3`;
   console.log(data);
 }
+
+const mainPage = document.querySelector(".all-quraan");
 async function getSurahName() {
   // طلب بيانات القارئ (رقم 1 هو العفاسي)
   const response = await fetch("http://api.alquran.cloud/v1/surah");
@@ -92,7 +135,6 @@ async function getSurahName() {
     let surahArab = document.createElement("h3");
     let surahEng = document.createElement("p");
     let surah = document.createElement("div");
-
     num.innerHTML = i + 1;
     surahArab.innerHTML = data.data[i].name;
     surahEng.innerHTML = data.data[i].englishName;
@@ -103,6 +145,50 @@ async function getSurahName() {
     surah.appendChild(num);
     surah.appendChild(info);
     mainPage.appendChild(surah);
+    surah.addEventListener("click", function () {
+      audio.src = `https://server12.mp3quran.net/maher/Almusshaf-Al-Mojawwad/${returnThreeDigits(num.innerHTML)}.mp3`;
+      audio.play();
+      playIcon.classList.remove("fa-play");
+      playIcon.classList.add("fa-pause");
+    });
+  }
+  searchOfSurah();
+}
+function returnThreeDigits(num) {
+  Number(num);
+  if (num < 10) {
+    return `00${num}`;
+  } else if (num < 99) {
+    return `0${num}`;
+  } else {
+    return num;
   }
 }
 getSurahName();
+
+function cleanText(text) {
+  if (!text) return "";
+
+  return text
+    .toLowerCase() // للإنجليزي
+    .trim() // إزالة المسافات الزائدة في البداية والنهاية
+    .replace(/[\u064B-\u0652]/g, "") // إزالة التشكيل العربي
+    .replace(/[أإآ]/g, "ا") // توحيد الألف
+    .replace(/ة/g, "ه") // توحيد التاء المربوطة
+    .replace(/ى/g, "ي"); // توحيد الياء
+}
+function searchOfSurah() {
+  const searchSurah = document.querySelector(".search");
+
+  searchSurah.addEventListener("input", function () {
+    let names = mainPage.getElementsByTagName("div");
+    Array.from(names).forEach((ele) => {
+      let text = cleanText(ele.innerHTML);
+      if (text.includes(searchSurah.value)) {
+        ele.style.display = "";
+      } else {
+        ele.style.display = "none";
+      }
+    });
+  });
+}

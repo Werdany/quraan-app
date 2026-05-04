@@ -159,7 +159,6 @@ footer .time {
   width: calc(100% - 300px);
   position: relative;
   left: -300px;
-
   background-color: var(--surface);
   padding: 20px;
 }
@@ -202,7 +201,6 @@ footer .time {
   height: 50px;
   border-radius: 9999px;
   transition: 0.3s;
-  overflow: hidden;
   position: relative;
   cursor: pointer;
 }
@@ -211,24 +209,65 @@ footer .time {
   font-family: "Font Awesome 5 Free";
   position: absolute;
   right: 20px;
-  top: 15px;
+  top: 17px;
   color: var(--primary);
 }
-.reader select {
-  width: 300px;
-  height: 50px;
-  border-radius: 9999px;
-  padding: 0 40px 0;
-  border: 0;
-  outline: 0;
-  color: var(--text-muted);
-  transition: 0.3s;
 
-  cursor: pointer;
-}
 .reader:hover {
   border: 1px solid var(--accent);
   transform: translateY(-5px);
+}
+.reader p {
+  padding: 0;
+  top: 0px;
+  right: 50px;
+  position: absolute;
+}
+.reader .list {
+  position: absolute;
+  bottom: 100000px;
+  right: 7px;
+  width: 100%;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  border-radius: var(--radius);
+  overflow: scroll;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.visible {
+  opacity: 1 !important;
+
+  bottom: -310px !important;
+}
+.reader .list span {
+  background-color: #60a5fa29;
+  display: block;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+.reader .list input {
+  border: inherit;
+  outline: 0;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 9999px;
+  width: 100%;
+}
+
+.reader .list .reader-name {
+  padding: 15px 0;
+  transition: 0.3s;
+}
+.reader .list .reader-name:hover:not(.reader-active) {
+  background-color: #60a5fa29;
+  color: var(--accent);
+}
+.reader .list .reader-active {
+  background-color: var(--primary);
+  color: #fff;
 }
 .all-quraan {
   display: grid;
@@ -236,6 +275,7 @@ footer .time {
   gap: 25px;
   background-color: transparent;
   margin-top: 50px;
+  margin-bottom: 99px;
 }
 .all-quraan .surah {
   display: flex;
@@ -247,6 +287,7 @@ footer .time {
 }
 .all-quraan .surah:hover {
   border: 1px solid var(--accent);
+  cursor: pointer;
   span {
     background-color: #60a5fa29;
     color: var(--accent);
