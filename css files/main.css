@@ -284,7 +284,7 @@ footer .time {
   transition: 0.3s;
   border: 1px solid transparent;
 }
-.all-quraan .surah:hover:not(.play-surah) {
+.all-quraan .surah:hover:not(.active-surah) {
   border: 1px solid var(--accent);
   cursor: pointer;
   span {
@@ -313,7 +313,7 @@ footer .time {
   color: var(--text-muted);
   margin-top: 5px;
 }
-.all-quraan .play-surah {
+.all-quraan .active-surah {
   border: 1px solid var(--accent);
   cursor: pointer;
   background-color: #60a5fa29;
