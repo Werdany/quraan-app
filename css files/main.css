@@ -59,7 +59,7 @@ aside .side-list ul {
   list-style-type: none;
   padding: 0;
 }
-aside .side-list button {
+aside .side-list a {
   width: 80%;
   padding: 10px;
   background-color: var(--background);
@@ -71,12 +71,21 @@ aside .side-list button {
   border: none;
   cursor: pointer;
   transition: 0.3s;
+  text-decoration: none;
+  display: block;
+  margin-right: 30px;
 }
-aside .side-list button:hover:not(.active) {
+aside .side-list a:hover:not(.active) {
   background-color: #60a5fa29;
   color: var(--primary-light);
 }
-aside button.active {
+
+a,
+a:visited {
+  color: var(--text-main);
+  text-decoration: none;
+}
+aside a.active {
   background-color: var(--primary);
   color: #fff;
 }
@@ -162,19 +171,19 @@ footer .time {
   background-color: var(--surface);
   padding: 20px;
 }
-.listen .head {
+.head {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
 }
-.listen .head h1 {
+.head h1 {
   margin: 0;
   color: var(--text-main);
   font-size: 30px;
   background-color: transparent;
 }
-.listen .head input {
+.head input {
   margin-left: 100px;
   border: none;
   outline: none;
@@ -186,12 +195,12 @@ footer .time {
   color: var(--text-muted);
   transition: 0.3s;
 }
-.listen .head i {
+.head i {
   position: absolute;
   left: 382px;
   color: var(--text-muted);
 }
-.listen .head input:focus {
+.head input:focus {
   border: 1px solid var(--accent);
 }
 
@@ -330,4 +339,68 @@ footer .time {
       background-color: transparent;
     }
   }
+}
+/* End MainPage */
+/* Start ReadPage */
+.quraan-text {
+  margin-right: 350px;
+  color: #000;
+  background-color: var(--background);
+}
+.quraan-text .search-surah select {
+  width: 200px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px solid #000;
+  border-radius: 9999px;
+  padding: 0 10px;
+}
+.quraan-text .show-surah {
+  margin: 50px 20px;
+}
+.show-surah > .text {
+  font-size: 20px;
+  background-color: transparent;
+  display: inline-block;
+  color: var(--primary-light);
+  transition: 0.3s;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.show-surah > .text:hover,
+.show-surah > .text:hover > span {
+  background-color: var(--primary-dark);
+  color: #fff;
+}
+.ayah-number {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  border: 2px solid #c9a227;
+
+  color: #c9a227;
+  font-weight: 700;
+
+  margin: 0 5px;
+  position: relative;
+}
+
+.ayah-number::before {
+  content: "✦";
+  position: absolute;
+  top: -10px;
+  font-size: 10px;
+}
+
+.ayah-number::after {
+  content: "✦";
+  position: absolute;
+  bottom: -10px;
+  font-size: 10px;
 }
