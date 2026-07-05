@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quraan App</title>
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!-- normalize css file -->
+    <link rel="stylesheet" href="css files/normalize.css" />
+    <!-- css main file  -->
+    <link rel="stylesheet" href="css files/main.css" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&#038;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Start aside -->
+    <aside>
+      <div class="logo">
+        <img src="images/quraan logo.jpeg" />
+        <h1>القرآن الكريم</h1>
+      </div>
+      <div class="side-list">
+        <a href="index.html" class="btn">الأستماع</a>
+        <a href="read.html" class="btn">القراءه</a>
+        <a href="tafsser.html" class="btn active">التفسير</a>
+        <a href="azkar.html" class="btn">الأذكار</a>
+        <a href="ahadeth.html" class="btn">الأحاديث</a>
+        <a href="hekama.html" class="btn">حكم ومواعظ</a>
+        <a href="time.html" class="btn">مواقيت الصلاه</a>
+      </div>
+    </aside>
+    <!-- End aside -->
+    <!-- Start Section -->
+    <div class="quraan-text">
+      <div class="search-surah">
+        <select class="choose-surah">
+          <option value="">اختر سورة...</option>
+        </select>
+      </div>
+      <div class="head">
+        <input type="text" class="search" placeholder="ابحث عن آيه..." />
+      </div>
+      <div class="show-surah one-line"></div>
+    </div>
+
+    <script src="js files/tafsser.js"></script>
+  </body>
+</html>

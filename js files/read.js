@@ -16,7 +16,6 @@ async function init() {
   for (let i = 1; i <= 114; i++) {
     surahText.push(await getSurahText(i));
   }
-  console.log(surahText);
   addSurahName();
 }
 
@@ -28,7 +27,9 @@ async function getSurahName() {
   return data.data;
 }
 async function getSurahText(val) {
-  let response = await fetch(`https://api.alquran.cloud/v1/surah/${val}`);
+  let response = await fetch(
+    `https://api.alquran.cloud/v1/surah/${val}/quran-simple`,
+  );
   let data = await response.json();
   return data.data;
 }
@@ -48,9 +49,11 @@ surahName.addEventListener("change", () => {
   showSurah(currentSurah);
 });
 let show = document.querySelector(".show-surah");
-function showSurah(val) {
+async function showSurah(val) {
+  val = Number(val);
   clean();
   for (let i = 0; i <= surahText[val].ayahs.length; i++) {
+    let mainAyah = document.createElement("div");
     let p = document.createElement("p");
     p.classList.add("text");
     p.textContent = surahText[val].ayahs[i].text;
@@ -58,7 +61,8 @@ function showSurah(val) {
     sp.textContent = i + 1;
     sp.classList.add("ayah-number");
     p.appendChild(sp);
-    show.appendChild(p);
+    mainAyah.appendChild(p);
+    show.appendChild(mainAyah);
   }
 }
 function clean() {
@@ -68,8 +72,8 @@ function normalizeArabic(text) {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[\u064B-\u065F\u0670]/g, "") // التشكيل والألف الصغيرة
-    .replace(/[ۖۗۘۙۚۛۜ۝۞]/g, "") // رموز الوقف
+    .replace(/[\u064B-\u065F\u0670]/g, "")
+    .replace(/[ۖۗۘۙۚۛۜ۝۞]/g, "")
     .replace(/[أإآٱ]/g, "ا")
     .replace(/ة/g, "ه")
     .replace(/ى/g, "ي")

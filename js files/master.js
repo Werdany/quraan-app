@@ -330,15 +330,18 @@ function formatTime(time) {
 
 // clean text
 function cleanText(text) {
-  if (!text) return "";
-
   return text
     .toLowerCase()
     .trim()
-    .replace(/[\u064B-\u0652]/g, "")
-    .replace(/[أإآ]/g, "ا")
+    .replace(/[\u064B-\u065F\u0670]/g, "")
+    .replace(/[ۖۗۘۙۚۛۜ۝۞]/g, "")
+    .replace(/[أإآٱ]/g, "ا")
     .replace(/ة/g, "ه")
-    .replace(/ى/g, "ي");
+    .replace(/ى/g, "ي")
+    .replace(/ؤ/g, "و")
+    .replace(/ئ/g, "ي")
+    .replace(/ـ/g, "")
+    .replace(/[\u06D6-\u06ED]/g, "");
 }
 
 // search surah
