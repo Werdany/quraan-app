@@ -51,10 +51,12 @@ surahName.addEventListener("change", () => {
 });
 let show = document.querySelector(".show-surah");
 async function showSurah(val) {
-  val = Number(val);
   clean();
-  let tafsirAyat = await getSurahTafsser(val + 1, surahText[val].ayahs.length);
-  for (let i = 0; i <= surahText[val].ayahs.length; i++) {
+  let tafsirAyat = await getSurahTafsser(
+    Number(val) + 1,
+    surahText[val].ayahs.length,
+  );
+  for (let i = 0; i < surahText[val].ayahs.length; i++) {
     let mainAyah = document.createElement("div");
     let p = document.createElement("p");
     p.classList.add("text");
@@ -65,7 +67,7 @@ async function showSurah(val) {
     p.appendChild(sp);
     let div = document.createElement("div");
     div.classList.add("tafsir");
-    div.textContent = tafsirAyat[i].tafsir;
+    div.textContent = tafsirAyat[i].tafsir.text;
     mainAyah.appendChild(p);
     mainAyah.appendChild(div);
     show.appendChild(mainAyah);
@@ -109,20 +111,18 @@ function searchOfAyah() {
 }
 searchOfAyah();
 async function getSurahTafsser(surah, ayah) {
+  console.log(surah, ayah);
   let tafsser = [];
   let requests = [];
-  for (let i = 1; i <= ayah; i++) {
-    requests.push(
-      fetch(
-        `https://api.alquran.cloud/v1/ayah/${surah}:${ayah}>/ar.muyassar`,
-      ).then((res) => res.json()),
-    );
-  }
-  const data = await Promise.all(requests);
+  const response = await fetch(
+    `https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@master/tafsir/ar-tafsir-muyassar/${surah}.json`,
+  );
+
+  const data = await response.json();
   data.forEach(function (ele, index) {
     tafsser.push({
       ayah: index + 1,
-      tafsir: ele.data.text,
+      tafsir: ele,
     });
   });
   console.log(tafsser);
