@@ -420,3 +420,88 @@ footer .time {
   padding: 10px;
   box-shadow: 5px 0px 1px var(--primary-light);
 }
+/* End Tafsir */
+/* Start Azkar */
+.content {
+  width: calc(100% - 320px);
+  margin-right: 20;
+  margin-right: 320px;
+}
+.content .main ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.content .main ul li {
+  margin-right: 15px;
+}
+.content .main ul li button {
+  padding: 10px 15px;
+  cursor: pointer;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  transition: 0.3s;
+}
+.content .main ul li button:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+.content .main ul li button.active {
+  background-color: var(--primary);
+  color: #fff;
+}
+.show-azkar {
+  width: 800px;
+  margin: 20px auto;
+}
+.show-azkar > div {
+  position: relative;
+  margin-bottom: 30px;
+  padding: 5px 30px;
+  background-color: var(--background);
+  border-radius: var(--radius);
+  box-shadow:
+    -5px 0px 1px var(--primary-light),
+    5px 0px 3px var(--border);
+}
+.show-azkar .alzekr {
+  background-color: transparent;
+  line-height: 1.5;
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+.show-azkar .describtion {
+  background-color: transparent;
+  font-weight: bold;
+  color: var(--primary-light);
+  max-width: 94%;
+}
+.show-azkar .count {
+  position: absolute;
+  bottom: 20px;
+  left: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.blackColor {
+  color: var(--text-muted) !important;
+}
+.blackBg {
+  background-color: var(--text-muted) !important;
+}
+.blackBox {
+  box-shadow: -5px 0px 1px var(--text-muted) !important;
+}
+/* End Azkar */
