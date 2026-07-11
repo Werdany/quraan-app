@@ -348,12 +348,16 @@ footer .time {
   background-color: var(--background);
 }
 .quraan-text .search-surah select {
-  width: 200px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  border: 1px solid #000;
+  width: 320px;
+  margin: 30px 0;
+  height: 50px;
   border-radius: 9999px;
-  padding: 0 10px;
+  cursor: pointer;
+  outline: none;
+  padding: 0 15px;
+}
+.quraan-text .search-surah select:hover {
+  border: 1px solid var(--accent);
 }
 .quraan-text .show-surah {
   margin: 50px 20px;
@@ -505,3 +509,17 @@ footer .time {
   box-shadow: -5px 0px 1px var(--text-muted) !important;
 }
 /* End Azkar */
+/* Start Ahadith */
+.ahadith {
+  width: 320px;
+  margin-top: 30px;
+  height: 50px;
+  border-radius: 9999px;
+  cursor: pointer;
+  outline: none;
+  padding: 0 15px;
+}
+.ahadith:hover {
+  border: 1px solid var(--accent);
+}
+/* End Ahadith */
