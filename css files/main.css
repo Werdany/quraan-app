@@ -23,10 +23,13 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 10px -1px rgb(0 0 0 / 0.1);
   --radius: 12px;
+  /* التخطيط - Layout (overridden in the responsive section) */
+  --aside-w: 300px;
+  --nav-h: 64px;
 }
 /* Start aside */
 aside {
-  width: 300px;
+  width: var(--aside-w);
   background-color: var(--background);
   height: 100vh;
   position: fixed;
@@ -72,8 +75,18 @@ aside .side-list a {
   cursor: pointer;
   transition: 0.3s;
   text-decoration: none;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   margin-right: 30px;
+}
+aside .side-list a > * {
+  background-color: transparent;
+}
+aside .side-list a i {
+  width: 1.25em;
+  text-align: center;
 }
 aside .side-list a:hover:not(.active) {
   background-color: #60a5fa29;
@@ -165,9 +178,9 @@ footer .time {
 /* end footer */
 /* Start Listen */
 .listen {
-  width: calc(100% - 300px);
+  width: calc(100% - var(--aside-w));
   position: relative;
-  left: -300px;
+  left: calc(var(--aside-w) * -1);
   background-color: var(--surface);
   padding: 20px;
 }
@@ -344,7 +357,7 @@ footer .time {
 /* End MainPage */
 /* Start ReadPage */
 .quraan-text {
-  margin-right: 300px;
+  margin-right: var(--aside-w);
   color: #000;
   background-color: var(--surface);
   min-height: calc(100vh);
@@ -440,9 +453,9 @@ footer .time {
 /* End Tafsir */
 /* Start Azkar */
 .content {
-  width: calc(100% - 300px);
+  width: calc(100% - var(--aside-w));
   min-height: 100vh;
-  margin-right: 300px;
+  margin-right: var(--aside-w);
   background-color: var(--surface);
 }
 .content h1 {
@@ -576,3 +589,199 @@ footer .time {
   border-radius: 15px;
 }
 /* End PrayTime */
+
+/* ==========================================================
+   Responsive
+   Desktop (> 1024px) is unchanged. The sidebar width and the
+   content offsets all follow --aside-w, so each breakpoint only
+   has to change that variable.
+   ========================================================== */
+
+/* Tablet: compact sidebar, stacked search bar, fluid containers */
+@media (max-width: 1024px) {
+  :root {
+    --aside-w: 220px;
+  }
+  aside {
+    padding-top: 24px;
+  }
+  aside .logo img {
+    width: 64px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  aside .logo h1 {
+    font-size: 20px;
+  }
+  aside .side-list a {
+    width: 84%;
+    margin-right: 8%;
+    font-size: 18px;
+    gap: 10px;
+  }
+  /* search: title on its own line, input below it */
+  .listen .head {
+    position: relative;
+    padding: 0;
+  }
+  .head {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .head h1 {
+    flex: 1 1 100%;
+  }
+  .head input {
+    margin-left: 0;
+    width: 100%;
+    max-width: 420px;
+  }
+  .head i {
+    left: auto;
+    right: 18px;
+    bottom: 17px;
+  }
+  /* azkar / ahadith / prayer times */
+  .content .main ul {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 12px;
+  }
+  .content .main ul li {
+    margin-right: 0;
+  }
+  .ahadith {
+    margin-right: 20px;
+    max-width: calc(100% - 40px);
+  }
+  .show-azkar {
+    width: calc(100% - 32px);
+    max-width: 800px;
+  }
+  .pray-time {
+    width: calc(100% - 40px);
+    margin: 60px auto;
+    flex-wrap: wrap;
+  }
+  .pray-time .time {
+    width: calc(50% - 10px);
+  }
+}
+
+/* Mobile: sidebar becomes a fixed bottom bar (icons only),
+   the audio player sits directly above it */
+@media (max-width: 768px) {
+  :root {
+    --aside-w: 0px;
+  }
+  /* bottom navigation */
+  aside {
+    width: 100%;
+    height: var(--nav-h);
+    bottom: 0;
+    padding: 0;
+    flex-direction: row;
+    z-index: 100001;
+    box-shadow: 0 -4px 10px -1px rgb(0 0 0 / 0.1);
+  }
+  aside .logo {
+    display: none;
+  }
+  aside .side-list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 8px;
+  }
+  aside .side-list a {
+    flex: 1;
+    width: auto;
+    height: 46px;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+  }
+  aside .side-list a span {
+    display: none;
+  }
+  /* keep page content clear of the bar */
+  .content,
+  .quraan-text {
+    padding-bottom: var(--nav-h);
+  }
+  .all-quraan {
+    margin-bottom: calc(var(--nav-h) + 99px);
+  }
+  .reader,
+  .quraan-text .search-surah select {
+    max-width: 100%;
+  }
+  .show-azkar > div {
+    padding: 5px 18px;
+  }
+  .pray-time .time {
+    width: 100%;
+  }
+  /* audio player: one compact row, docked on top of the nav */
+  footer {
+    bottom: var(--nav-h);
+    box-shadow: 0 -2px 8px -1px rgb(0 0 0 / 0.08);
+  }
+  footer .icon {
+    height: 64px;
+    padding: 0 12px;
+  }
+  footer .icon .song-name {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+  }
+  footer .icon .song-name i {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 0 0 10px;
+  }
+  footer .icon .song-name .text {
+    min-width: 0;
+  }
+  footer .icon .song-name .text h2,
+  footer .icon .song-name .text p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  footer .icon .song-name .text h2 {
+    font-size: 16px;
+  }
+  footer .icon .song-name .text p {
+    font-size: 12px;
+  }
+  footer .icon .play-pause {
+    flex: none;
+  }
+  footer .icon .play-pause i {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+  }
+  footer .time {
+    flex: none;
+    font-size: 12px;
+  }
+}
+
+/* Small phones: drop the music tile to leave room for the title */
+@media (max-width: 480px) {
+  footer .icon {
+    padding: 0 8px;
+  }
+  footer .icon .song-name i {
+    display: none;
+  }
+  footer .icon .play-pause i {
+    width: 32px;
+  }
+}
