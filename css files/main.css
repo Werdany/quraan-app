@@ -176,6 +176,7 @@ footer .time {
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
+  padding: 0 20px;
 }
 .head h1 {
   margin: 0;
@@ -197,7 +198,7 @@ footer .time {
 }
 .head i {
   position: absolute;
-  left: 382px;
+  left: 407px;
   color: var(--text-muted);
 }
 .head input:focus {
@@ -343,9 +344,19 @@ footer .time {
 /* End MainPage */
 /* Start ReadPage */
 .quraan-text {
-  margin-right: 350px;
+  margin-right: 300px;
   color: #000;
-  background-color: var(--background);
+  background-color: var(--surface);
+  min-height: calc(100vh);
+}
+.quraan-text h1 {
+  background-color: transparent;
+  margin: 0;
+  padding: 20px 0;
+}
+.search-surah {
+  background-color: transparent;
+  padding: 0 20px;
 }
 .quraan-text .search-surah select {
   width: 320px;
@@ -361,9 +372,11 @@ footer .time {
 }
 .quraan-text .show-surah {
   margin: 50px 20px;
+  background-color: transparent;
 }
 .show-surah > div {
   display: inline;
+  background-color: transparent;
 }
 .show-surah > div > .text {
   font-size: 20px;
@@ -427,11 +440,21 @@ footer .time {
 /* End Tafsir */
 /* Start Azkar */
 .content {
-  width: calc(100% - 320px);
-  margin-right: 20;
-  margin-right: 320px;
+  width: calc(100% - 300px);
+  min-height: 100vh;
+  margin-right: 300px;
+  background-color: var(--surface);
+}
+.content h1 {
+  background-color: transparent;
+  margin: 0;
+  padding: 20px;
+}
+.content .main {
+  background-color: transparent;
 }
 .content .main ul {
+  background-color: transparent;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -459,6 +482,8 @@ footer .time {
 .show-azkar {
   width: 800px;
   margin: 20px auto;
+  background-color: transparent;
+  height: 100%;
 }
 .show-azkar > div {
   position: relative;
@@ -523,3 +548,31 @@ footer .time {
   border: 1px solid var(--accent);
 }
 /* End Ahadith */
+/* Start PrayTime */
+.content {
+  min-height: calc(100vh - 22px);
+  background-color: var(--surface);
+}
+.content h1 {
+  background-color: transparent;
+}
+.pray-time {
+  margin: 200px auto;
+  width: calc(100% - 320px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  background-color: transparent;
+  flex-direction: row-reverse;
+}
+.pray-time .time {
+  text-align: center;
+  height: 100px;
+  width: 300px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid var(--accent);
+  border-radius: 15px;
+}
+/* End PrayTime */
