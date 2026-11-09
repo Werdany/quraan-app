@@ -32,7 +32,7 @@ The goal of this project is to create a simple, fast, and user-friendly experien
 
 ## 🚀 Live Demo
 
-> Coming Soon...
+[🚀 View Live Demo](https://werdany.github.io/quraan-app/)
 
 ---
 
