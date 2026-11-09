@@ -20,35 +20,35 @@ async function init() {
 init();
 
 async function nawawia() {
-  const response = await fetch("../json/nawawi40_clean.json");
+  const response = await fetch("./json/nawawi40_clean.json");
 
   const data = await response.json();
 
   return data;
 }
 async function bukhary() {
-  const response = await fetch("../json/bukhari_clean.json");
+  const response = await fetch("./json/bukhari_clean.json");
 
   const data = await response.json();
 
   return data;
 }
 async function muslim() {
-  const response = await fetch("../json/muslim_clean.json");
+  const response = await fetch("./json/muslim_clean.json");
 
   const data = await response.json();
 
   return data;
 }
 async function malik() {
-  const response = await fetch("../json/malik_clean.json");
+  const response = await fetch("./json/malik_clean.json");
 
   const data = await response.json();
 
   return data;
 }
 async function Termezy() {
-  const response = await fetch("../json/tirmidhi_clean.json");
+  const response = await fetch("./json/tirmidhi_clean.json");
 
   const data = await response.json();
 
